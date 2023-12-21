@@ -1,23 +1,25 @@
 var video = document.querySelector("#videoElement");
 var canvas = document.createElement("canvas");
-canvas.id = "boundingBoxCanvas";
 var ctx = canvas.getContext("2d");
 
-var container = document.querySelector("#container");
-container.appendChild(canvas); // Add the canvas to the document body
+var container = document.querySelector("#video-container");
 
 if (navigator.mediaDevices.getUserMedia) {
+  // Check if getUserMedia is supported
   navigator.mediaDevices
-    .getUserMedia({ video: true })
+    .getUserMedia({ video: true }) // Request access to the camera
     .then(function (stream) {
-      video.srcObject = stream;
+      // If access is granted
+      video.srcObject = stream; // Set the video source object to the camera
       video.onloadedmetadata = function (e) {
-        video.play();
+        // Wait until the video metadata is loaded
+        video.play(); // Play the video
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
       };
     })
     .catch(function (err0r) {
+      // If access is denied
       console.log("Something went wrong!");
     });
 }
@@ -47,7 +49,7 @@ function sendFrame(imgData) {
 
       if (data.status === "success" && data.bboxes.length > 0) {
         // console.log(data.bboxes);
-        drawBoundingBoxes(data.bboxes, data.emotions);
+        displayEmotion(data.emotion);
       }
     })
     .catch((error) => {
@@ -56,29 +58,12 @@ function sendFrame(imgData) {
 }
 
 // Function to draw the bounding boxes
-function drawBoundingBoxes(bboxes, emotions) {
-  bboxes.forEach((box) => {
-    console.log(box);
-
-    const [x, y, width, height] = box;
-    const text = emotions[bboxes.indexOf(box)];
-
-    // Set Styling
-    ctx.strokeStyle = "#c3ff00";
-    ctx.font = "20px Candara";
-    ctx.lineWidth = 1;
-
-    // Draw rectangles and text
-    ctx.beginPath();
-    ctx.fillStyle = "#c3ff00";
-    ctx.fillText(text, x, y - 5);
-    ctx.rect(x, y, width, height);
-    ctx.stroke();
-  });
+function displayEmotion(emotion) {
+  // capture the frame and send it to the server
 }
 
 // It capture the frame every 50 milliseconds and send it to the server
-setInterval(function () {
-  var frame = captureFrame();
-  sendFrame(frame);
-}, 50);
+// setInterval(function () {
+//   var frame = captureFrame();
+//   sendFrame(frame);
+// }, 50);

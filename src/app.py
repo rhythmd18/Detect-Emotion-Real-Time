@@ -31,14 +31,14 @@ def analyze_frame():
 
     # Perform the predictions here
     bboxes = detect_face(img)
-    emotions = predict_emotions(bboxes, img)
+    emotion = predict_emotions(bboxes, img)
 
     if type(bboxes) == tuple:
         bboxes = list(bboxes)
     else:
         bboxes = bboxes.tolist()
 
-    return jsonify({'status': 'success', 'bboxes': bboxes, 'emotions': emotions})
+    return jsonify({'status': 'success', 'bboxes': bboxes, 'emotion': emotion})
 
 
 if __name__=='__main__':
