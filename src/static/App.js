@@ -47,9 +47,9 @@ function sendFrame(imgData) {
     .then((data) => {
       // console.log(data);
 
-      if (data.status === "success" && data.bboxes.length > 0) {
+      if (data.status === "success") {
         // console.log(data.bboxes);
-        displayEmotion(data.emotion);
+        displayEmotion(data.emotion, data.bboxes.length > 0);
       }
     })
     .catch((error) => {
@@ -58,12 +58,17 @@ function sendFrame(imgData) {
 }
 
 // Function to draw the bounding boxes
-function displayEmotion(emotion) {
+function displayEmotion(emotion, hasFace) {
   // capture the frame and send it to the server
+  var emotionEl = document.getElementById("emotion-el");
+  if (hasFace) {
+    emotionEl.textContent = emotion;
+  } else {
+    emotionEl.textContent = "No face detected";
+  }
 }
 
-// It capture the frame every 50 milliseconds and send it to the server
-// setInterval(function () {
-//   var frame = captureFrame();
-//   sendFrame(frame);
-// }, 50);
+function getEmotion() {
+  var frame = captureFrame();
+  sendFrame(frame);
+}
