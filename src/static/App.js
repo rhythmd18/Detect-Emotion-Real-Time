@@ -45,6 +45,7 @@ function sendFrame(imgData) {
   })
     .then((response) => response.json()) // Parse the response body as JSON
     .then((data) => {
+      // Process the response data
       // console.log(data);
 
       if (data.status === "success") {
@@ -62,9 +63,11 @@ function displayEmotion(emotion, hasFace) {
   // capture the frame and send it to the server
   var emotionEl = document.getElementById("emotion-el");
   if (hasFace) {
+    emotionEl.style.color = "rgb(191, 255, 0)";
     emotionEl.textContent = emotion;
   } else {
-    emotionEl.textContent = "No face detected";
+    emotionEl.style.color = "red";
+    emotionEl.textContent = "No face detected!";
   }
 }
 

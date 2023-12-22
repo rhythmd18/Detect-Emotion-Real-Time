@@ -13,9 +13,16 @@ nav {
 }
 
 h1 {
-  font-weight: 200;
+  font-weight: 500;
   font-size: 2.5em;
   margin: 0;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 }
 
 #detection {
@@ -25,11 +32,13 @@ h1 {
 }
 
 h3 {
-  font-family: "Raleway", sans-serif;
+  height: 50px;
+  font-size: 2em;
+  font-style: italic;
+  margin: 0;
 }
 
 #emotion-el {
-  color: rgb(255, 183, 0);
   font-family: "Quicksand", sans-serif;
   font-weight: 300;
 }
@@ -40,4 +49,61 @@ h3 {
 
 #videoElement {
   border-radius: 10px;
+}
+
+#detection-btn {
+  background-color: #bf00ff;
+  border: none;
+  color: white;
+  padding: 10px 90px;
+  text-align: center;
+  display: inline-block;
+  font-family: "Poppins" sans-serif;
+  font-size: large;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+#description {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: thin;
+  font-size: xx-large;
+}
+
+#detection-n-btn {
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  nav {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  #content {
+    grid-template-columns: 1fr;
+  }
+
+  #video-container {
+    order: -1;
+  }
+
+  #detection-n-btn {
+    margin: 15px;
+  }
+
+  #detection-btn {
+    order: -1;
+  }
+
+  #description {
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    margin: 20px;
+  }
 }
