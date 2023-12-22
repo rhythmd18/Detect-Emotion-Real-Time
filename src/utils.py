@@ -27,17 +27,26 @@ def detect_face(frame):
 
 
 def predict_emotions(faces, frame):
-    predictions = []
-    for (x, y, width, height) in faces:
-        cropped = frame[y:y+height, x:x+width]
-        resized = cv2.resize(cropped, (48, 48)) / 255
-        X = torch.from_numpy(resized).unsqueeze(0).unsqueeze(0).to(torch.float32)
-        
-        y_pred = model(X)
+    if len(faces) == 0:
+        return None
 
-        pred_idx = y_pred.argmax(1).item()
-        prediction = labels[pred_idx]
+    nearest_face = []
+    max_width = 0
+    
+    for face in faces:
+        if face[2] > max_width:
+            max_width = face[2]
+            nearest_face = face
 
-        predictions.append(prediction)
+    x, y, width, height = nearest_face
 
-    return predictions
+    cropped = frame[y:y+height, x:x+width]
+    resized = cv2.resize(cropped, (48, 48)) / 255
+    X = torch.from_numpy(resized).unsqueeze(0).unsqueeze(0).to(torch.float32)
+    
+    y_pred = model(X)
+
+    pred_idx = y_pred.argmax(1).item()
+    prediction = labels[pred_idx]
+
+    return prediction

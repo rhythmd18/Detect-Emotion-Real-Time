@@ -49,7 +49,7 @@ function sendFrame(imgData) {
       // console.log(data);
 
       if (data.status === "success") {
-        // console.log(data.bboxes);
+        console.log(data.bboxes);
         displayEmotion(data.emotion, data.bboxes.length > 0);
       }
     })
