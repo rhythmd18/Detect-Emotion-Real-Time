@@ -109,6 +109,11 @@ h1 {
     font-size: 2em;
     margin: 10px;
   }
+
+  #videoElement {
+    width: 95%;
+    height: auto;
+  }
 }
 
 #detection-btn:hover {
