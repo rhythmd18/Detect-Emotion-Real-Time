@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - emotion-detector-volume:/app
+    environment:
+      - FLASK_APP=./src/app.py
+volumes:
+  emotion-detector-volume: {}
