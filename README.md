@@ -21,14 +21,9 @@ docker pull rhythmd18/facial-emotion-detector-app:latest
 ```
 - Run the application using this command
 ```bash
-docker run rhythmd18/facial-emotion-detector-app
-```
-That's it!
-
-***P.S.*** *In case the application fails to start, run this instead:*
-```bash
 docker run -p 5000:5000 rhythmd18/facial-emotion-detector-app
 ```
+That's it!
 
 
 ## Demo
