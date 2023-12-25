@@ -1,4 +1,3 @@
-
 # Facial Emotion Detector
 
 A simple Flask application that detects facial expressions using machine learning. It captures frames from a video stream and predicts the facial expressions.
@@ -7,9 +6,8 @@ It uses a CNN architecture which is an implementation of the model as described 
 
 The application has been dockerized for other devs to try out.
 
-
-
 ## Run Locally
+
 In order to run this application locally follow these steps:
 
 - Install [Docker](https://www.docker.com/products/docker-desktop/)
@@ -19,17 +17,18 @@ In order to run this application locally follow these steps:
 ```bash
 docker pull rhythmd18/facial-emotion-detector-app:latest
 ```
+
 - Run the application using this command
+
 ```bash
 docker run -p 5000:5000 rhythmd18/facial-emotion-detector-app
 ```
-That's it!
 
+That's it!
 
 ## Demo
 
-Insert gif or link to demo
-
+![](https://github.com/rhythmd18/Facial-Emotion-Detector/blob/main/demo.gif)
 
 ## Files Description
 
@@ -47,6 +46,7 @@ Insert gif or link to demo
 
 - `App.js`: This file contains scripts that interact with the API route. It sends frames to the API and receives responses in JSON format, which are then used to update the DOM.
 - `index.html` and `styles.css`: Pretty self-explanatory!
+
 ## Tech Stack
 
 **Client:** HTML, CSS, JavaScript
@@ -55,10 +55,8 @@ Insert gif or link to demo
 
 **CNN Architecture:** PyTorch
 
-
 ## Appendix
 
- - [Dataset](https://www.kaggle.com/datasets/prilia/fer2013pluscleanedaugmballanced1)
- - [Research Paper](https://arxiv.org/abs/1608.01041)
- - [PyTorch Quickstart](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html)
-
+- [Dataset](https://www.kaggle.com/datasets/prilia/fer2013pluscleanedaugmballanced1)
+- [Research Paper](https://arxiv.org/abs/1608.01041)
+- [PyTorch Quickstart](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html)
